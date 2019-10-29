@@ -1,2 +1,2 @@
 # Python-Socket
-Python socket program that transfer files netween client and server
+Python socket program that transfer files between a client and a server.
