@@ -1,22 +1,19 @@
-import socket
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-s = socket.socket()
-host = socket.gethostname()
-port = 9000
-s.bind((host, port))
-s.listen(1)
-print(host)
-conn ,addr = s.accept()
+__file__ = "server.py"
+__auther__ = "B. Alfanous"
+__email__ = "b.alfanous@outlook.com"
+__date__ = "28/Mar/2020"
 
-fileName = "rec.mp3"
-with open(fileName, 'ab') as file:
-	while True:
-		file_data = conn.recv(1024)
-		if not file_data:
-			break
-		file.write(file_data)
+import socket               # Import socket module
 
-#file = open(fileName, 'wb')
-#file_data = conn.recv(1024)
-#file.write(file_data)
-#file.close()
+s = socket.socket()         # Create a socket object
+host = socket.gethostname() # Get local machine name
+port = 9000               # Reserve a port for your service.
+s.bind((host, port))        # Bind to the port
+
+s.listen(5)                 # Now wait for client connection.
+c, addr = s.accept()     # Establish connection with client.
+print ("Got connection from: ", addr)
+c.close()                # Close the connection
