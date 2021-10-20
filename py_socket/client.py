@@ -6,10 +6,39 @@ __auther__ = "B. Alfanous"
 __email__ = "b.alfanous@outlook.com"
 __date__ = "28/Oct/2019"
 
-import socket               # Import socket module
+import socket
 
-s = socket.socket()         # Create a socket object
-host = socket.gethostname() # Get local machine name
-port = 9000                # Reserve a port for your service.
+# Get local machine name       
+host = socket.gethostname()
+# Reserve a port for your service.
+port = 9000  
+
+# Create a socket object that uses IPv4 and TCP
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   
+print("Socket created.\n")           
 s.connect((host, port))
-s.close()                     # Close the socket when done
+print(f'Host: {host} Port: {port} are binded.\n')     
+
+print("\n**********************************************\n")  
+
+fileName = s.recv(1024)
+print(f'Receiving file {fileName.decode("utf-8")} \n')
+
+f = open('txt1.txt', 'ab')
+
+while True:
+    print('receiving data...')
+    data = s.recv(1024)
+    print('data=%s', (data))
+    if not data:
+        break
+    # write data to a file
+    f.write(data)
+
+
+f.close()
+
+print("\n**********************************************\n")  
+# Close the socket when done
+s.close()
+print("Socket Closed.\n")                       
