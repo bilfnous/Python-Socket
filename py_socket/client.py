@@ -22,20 +22,18 @@ print(f'Host: {host} Port: {port} are binded.\n')
 print("\n**********************************************\n")  
 
 fileName = s.recv(1024)
-print(f'Receiving file {fileName.decode("utf-8")} \n')
+fName = fileName.decode("utf-8")
+print(f'Receiving file {fName} \n')
 
-f = open('txt1.txt', 'ab')
+f = open(fName, 'ab')
+print('receiving data...')
 
 while True:
-    print('receiving data...')
     data = s.recv(1024)
-    print('data=%s', (data))
     if not data:
         break
     # write data to a file
     f.write(data)
-
-
 f.close()
 
 print("\n**********************************************\n")  
