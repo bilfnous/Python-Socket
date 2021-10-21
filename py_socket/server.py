@@ -29,17 +29,14 @@ print ("Connection established to: ", addr)
 
 print("\n**********************************************\n")  
 
-#fileName = input("Enter file name: ")
-#clientconn.send(bytes(fileName, "utf-8"))
-#print(f'Sending file: {fileName} \n')
+fileName = input("Enter file name: ")
+clientconn.send(bytes(fileName, "utf-8"))
 
-f = open('txt.txt', 'rb')
-
+f = open(fileName, 'rb')
 for line in f:
     clientconn.send(line)
-
-
 f.close()
+
 print("\n**********************************************\n")  
 
 # Close the connection
