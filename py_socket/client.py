@@ -9,7 +9,7 @@ __date__ = "28/Oct/2019"
 import socket
 
 # Get Server Address      
-host = input("Enter server address, enter for current machine: ") or socket.gethostname()
+host = input("Enter server address, or current machine will be used: ") or socket.gethostname()
 host = int(host)
 # Reserve a port for your service.
 port = 9000  
